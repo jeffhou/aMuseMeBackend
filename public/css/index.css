@@ -1,0 +1,56 @@
+body {
+  background-image: url('../img/binding_dark.png');
+  //background-size: cover;
+}
+#current-container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 320;
+  border-style: solid;
+  border-color: white;
+  border-width: 10px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 3px black;
+}
+#current-art {
+  margin-bottom: 0px;
+}
+#current-info {
+  padding-top: 5;
+  padding-bottom: 5;
+  text-align: center;
+  line-height: 1.2;
+  background-color:rgba(36,36,36,0.5);
+  background-color: #242424;
+  color: white;
+}
+
+#rate-buttons {
+  width: 300;
+  margin: auto;
+}
+
+#thumbs-up {
+  margin-left: 50px;
+  display: inline;
+  float: left;
+}
+#thumbs-down {
+  margin-right: 50px;
+  display: inline;
+  float: right;
+}
+
+#content {
+  z-index: 10;
+  position: relative;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+.glyphicon {
+  height: 60px;
+  width: 60px;
+}

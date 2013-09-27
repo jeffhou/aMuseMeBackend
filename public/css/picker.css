@@ -1,0 +1,53 @@
+#bg-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: url('http://a1.mzstatic.com/us/r30/Music/v4/1f/e2/ca/1fe2cac4-ef84-c01b-0025-9c9635eadd6d/UMG_cvrart_00602537542338_01_RGB72_1500x1500_13UAAIM79861.100x100-75.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-filter: blur(10px);
+}
+#current-art {
+  margin: auto;
+  text-align: center;
+  margin-bottom: 30px;
+  width: 300;
+}
+
+#current-info {
+  padding-top: .7em;
+  background-color: #FFF;
+  opacity: 0.5;
+}
+
+#rate-buttons {
+  width: 300;
+  margin: auto;
+}
+
+#thumbs-up {
+  margin-left: 50px;
+  display: inline;
+  float: left;
+}
+#thumbs-down {
+  margin-right: 50px;
+  display: inline;
+  float: right;
+}
+
+#content {
+  z-index: 10;
+  position: relative;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+.glyphicon {
+  height: 60px;
+  width: 60px;
+}

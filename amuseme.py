@@ -30,6 +30,7 @@ def query_db(query, args=(), one=False):
 def before_request():
     g.db = connect_db()
 
+
 @app.teardown_request
 def teardown_request(exception):
     db = getattr(g, 'db', None)
@@ -91,6 +92,13 @@ def get_random():
             'select * from popularities where id=?', args=[int(random() * 50)],
             one=True)
     return json_response(song)
+
+
+@app.route('/api/genres')
+def get_genres():
+    genres = [item['genre']
+              for item in query_db('select distinct genre from popularities')]
+    return json_response(genres)
 
 
 if __name__ == '__main__':

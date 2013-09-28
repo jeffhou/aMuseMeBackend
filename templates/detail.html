@@ -4,80 +4,38 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/detail.css') }}" />
 </head>
 <body>
-  {{ name }}
-  {{ picture }}
-  {% for track in top_tracks %}
-  {{ track }}
-  {% endfor %}
-  {{ on_tour }}
-
-
   <div>
     <div class="content-container container">
 
       <div class="row detail-header">
         <div class="col-sm-4 left-col-width">
-          <img src="http://lorempixel.com/150/150/" alt="" />
+          <img src="{{ picture }}" alt="" />
         </div>
-        <div class="col-sm-8"> 
-          <h2>Artist Name Here</h2>
-          <h4>Genre of Artist</h4>
+        <div class="col-sm-8">
+          <h2>{{ name }}</h2>
+          <h4>{{ description}}</h4>
         </div>
       </div>
       <div class="tracks">
+        {% for track in other_songs %}
         <div class="row spacer">
           <div class="col-sm-4 left-col-width"></div>
           <div class="col-sm-8">
             <div class="col-sm-4 no-margin-left">
-              <img src="http://lorempixel.com/100/100/" alt="" />
+              <img src="{{ track.artworkUrl100 }}" alt="" />
             </div>
             <div class="col-sm-7 equal-height">
-              <h4>Track Name 1</h4>
-              <h5>Album Name</h5>
-              <div class="flat-bottom"><h5><a href="">$0.99</a></h5></div>
+              <h4>{{ track.trackName }}</h4>
+              <h5>{{ track.collectionName }}</h5>
+              <div class="flat-bottom"><h5><a href="">${{ track.trackPrice }}</a></h5></div>
             </div>
           </div>
         </div>
-
-        <div class="row spacer">
-          <div class="col-sm-4 left-col-width"></div>
-          <div class="col-sm-8">
-           <div class="col-sm-4 no-margin-left">
-            <img src="http://lorempixel.com/100/100/" alt="" />
-          </div>
-          <div class="col-sm-7 equal-height">
-            <h4>Track Name 4</h4>
-            <h5>Album Name</h5>
-            <div class="flat-bottom"><h5><a href="">$0.99</a></h5></div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div class="row spacer">
-        <div class="col-sm-4 left-col-width"></div>
-        <div class="col-sm-8">
-         <div class="col-sm-4 no-margin-left">
-          <img src="http://lorempixel.com/100/100/" alt="" />
-        </div>
-        <div class="col-sm-7 equal-height">
-          <h4>Track Name 3</h4>
-          <h5>Album Name</h5>
-          <div class="flat-bottom"><h5><a href="">$0.99</a></h5></div>
-        </div>
-      </div>
+        {% endfor %}
     </div>
   </div>
 
 </div>
 </div>
-
-
-buy link
-album name
-
-
-
 </body>
 </html>

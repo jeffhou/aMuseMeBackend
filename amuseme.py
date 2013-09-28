@@ -3,6 +3,7 @@ from werkzeug.contrib.cache import SimpleCache
 import os
 import lastfm
 import json
+import itunes
 
 app = Flask(__name__, static_url_path='', static_folder='public')
 
@@ -16,13 +17,22 @@ def index():
 def picker():
     return app.send_static_file('picker.html')
 
-@app.route('/detail')
-def detail():
+@app.route('/detail/<artist_id>')
+def detail(artist_id):
+    # TODO: make this async?
+    itunes_data = itunes.lookup(artist_id)
+    lastfm_data = lastfm.get_artist(itunes_data['artistName'])
+
+    song_fields = ['trackName', 'previewUrl', 'artworkUrl100', 'collectionName']
+    itunes_songs = itunes.search(itunes_data['artistName'])[:3]
+    itunes_songs = [dict((k, song[k]) for k in song_fields )
+        for song in itunes_songs]
+
     return render_template('detail.html', **{
-        'name': 'Cher',
-        'picture': 'http://userserve-ak.last.fm/serve/160/285717.jpg',
-        'top_tracks': ['Top Track 1', 'Top Track 2', 'Top Track 3'],
+        'name': itunes_data['artistName'],
+        'picture': lastfm_data['image'][2]['#text'],
         'on_tour': True,
+        'other_songs': itunes_songs,
     })
 
 @app.route('/api/artist')

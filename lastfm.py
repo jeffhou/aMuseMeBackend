@@ -1,6 +1,5 @@
 import json
 import requests
-from werkzeug.contrib.cache import SimpleCache
 
 #constants
 API_KEY = "188d3cd487e493f17365888e2d6adf9c"

@@ -91,7 +91,7 @@ def get_random():
             args=[genre], one=True)
     else:
         song = query_db(
-            'select * from popularities where id=?', args=[int(random() * 50)],
+            'select * from popularities order by random() limit 1',
             one=True)
     return json_response(song)
 

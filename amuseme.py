@@ -93,6 +93,11 @@ def get_random():
         song = query_db(
             'select * from popularities order by random() limit 1',
             one=True)
+
+    lookup = itunes.lookup(song['atom_id'])
+    fields = ['trackName', 'previewUrl', 'artworkUrl100', 'collectionName']
+    for field in fields:
+        song[field] = lookup[field]
     return json_response(song)
 
 

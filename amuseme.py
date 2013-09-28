@@ -16,6 +16,15 @@ def index():
 def picker():
     return app.send_static_file('picker.html')
 
+@app.route('/detail')
+def detail():
+    return render_template('detail.html', **{
+        'name': 'Cher',
+        'picture': 'http://userserve-ak.last.fm/serve/160/285717.jpg',
+        'top_tracks': ['Top Track 1', 'Top Track 2', 'Top Track 3'],
+        'on_tour': True,
+    })
+
 @app.route('/api/artist')
 def get_artist():
     artist_name = request.args.get('artist')

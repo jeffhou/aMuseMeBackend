@@ -38,4 +38,6 @@ venv
 
 public/vendor
 
+db/popularity.db
+
 *.swp

@@ -1,7 +1,7 @@
 <html>
 <head>
-  <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="css/detail.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/dist/css/bootstrap.min.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/detail.css') }}" />
 </head>
 <body>
   {{ name }}

@@ -41,5 +41,9 @@ body{;
 }
 
 .spacer{
-	margin-bottom: 100px;
+	margin-bottom: 70px;
+}
+
+h3{
+	font-size: 20px;
 }

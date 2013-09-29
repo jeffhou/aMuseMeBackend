@@ -15,6 +15,7 @@ body {
 }
 #current-container {
   width: 320;
+  background-color: #fff;
 }
 #current-art {
   margin-bottom: 0px;
@@ -74,6 +75,6 @@ body {
 
 #progress-bar {
   background-color: red;
-  height: 2px;
+  height: 4px;
   width: 100%;
 }

@@ -63,7 +63,6 @@
       }
       $.get(url, function(data) {
         _that.update_info(data);
-        _that.play();
         if (callback)
           callback();
       });
@@ -71,11 +70,18 @@
     like: function() {
       genres[this.info.genre] *= 2;
       liked.push(this.info.artistName);
-      this.get_new_song(weighted_average(genres));
+      var _that = this;
+      this.get_new_song(weighted_average(genres), function() {
+        _that.play();
+      });
+      this.play();
     },
     dislike: function() {
       genres[this.info.genre] /= 2;
-      this.get_new_song(weighted_average(genres));
+      var _that = this;
+      this.get_new_song(weighted_average(genres), function() {
+        _that.play();
+      });
     },
   };
 
@@ -84,7 +90,7 @@
     genre: function(callback) {
       $.get('/api/genres', function(data) {
         _.each(data, function(genre_id) {
-          genres[genre_id] = 8;
+          genres[genre_id] = 4;
         });
         callback(null);
       });
@@ -98,8 +104,6 @@
   },
   function (err, res) {
     song.update_info(res.random_song);
-    song.get_new_song(null);
-    song.play();
     $('#current-art').click(function() {
       song.toggle();
     });
@@ -109,5 +113,10 @@
     $('#thumbs-up').click(function() {
       song.like();
     });
+  });
+
+  $('#start').click(function() {
+    $(this).hide();
+    song.play();
   });
 })(jQuery);

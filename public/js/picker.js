@@ -118,5 +118,12 @@
   $('#start').click(function() {
     $(this).hide();
     song.play();
+    var count_from = 60;
+    var countdown = new Countdown(count_from, function(seconds) {
+      console.log(Math.floor((seconds/count_from) * 100) + '%');
+      $('#progress-bar').css('width', Math.floor((seconds/count_from) * 100) + '%')
+    }, function() {
+      console.log('done');
+    });
   });
 })(jQuery);

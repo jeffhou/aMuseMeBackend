@@ -54,3 +54,9 @@ body {
   height: 60px;
   width: 60px;
 }
+
+#progress-bar {
+  background-color: red;
+  height: 2px;
+  width: 100%;
+}

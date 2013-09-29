@@ -26,14 +26,17 @@ def get_similar(*artists):
     artist_images = {}
     for r in rs:
         r_json = r.json()
-        artist = r_json['similarartists']['@attr']['artist']
-        for similar in r_json['similarartists']['artist']:
-            if similar['name'] not in artist_images:
-                artist_images[similar['name']] = similar['image'][2]['#text']
-            if similar['name'] not in similar_artists:
-                similar_artists[similar['name']] = []
-            if len(similar_artists[similar['name']]) < 4:
-                similar_artists[similar['name']].append(artist)
+        try:
+            artist = r_json['similarartists']['@attr']['artist']
+            for similar in r_json['similarartists']['artist']:
+                if similar['name'] not in artist_images:
+                    artist_images[similar['name']] = similar['image'][2]['#text']
+                if similar['name'] not in similar_artists:
+                    similar_artists[similar['name']] = []
+                if len(similar_artists[similar['name']]) < 4:
+                    similar_artists[similar['name']].append(artist)
+        except KeyError:
+            pass
 
     similar_artists = [{
             'name': artist,

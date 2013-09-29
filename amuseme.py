@@ -49,25 +49,27 @@ def picker():
     return app.send_static_file('picker.html')
 
 
-@app.route('/detail/<artist_id>')
-def detail(artist_id):
-    # TODO: make this async?
-    itunes_data = itunes.lookup(artist_id)
-    lastfm_data = lastfm.get_artist(itunes_data['artistName'])
+@app.route('/detail/<artist_name>')
+def detail(artist_name):
+    itunes_search = itunes.search(artist_name, limit=1)
+    if len(itunes_search):
+        itunes_data = itunes.lookup(itunes_search[0]['artistId'])
+        lastfm_data = lastfm.get_artist(itunes_data['artistName'])
 
-    song_fields = ['trackName', 'previewUrl', 'artworkUrl100', 'collectionName',
-                   'trackPrice']
-    itunes_songs = itunes.search(itunes_data['artistName'])[:3]
-    itunes_songs = [dict((k, song[k]) for k in song_fields)
-                    for song in itunes_songs]
+        song_fields = ['trackName', 'previewUrl', 'artworkUrl100',
+            'collectionName', 'trackPrice']
+        itunes_songs = itunes.search(itunes_data['artistName'])[:3]
+        itunes_songs = [dict((k, song[k]) for k in song_fields)
+                        for song in itunes_songs]
 
-    return render_template('detail.html', **{
-        'name': itunes_data['artistName'],
-        'picture': lastfm_data['image'][2]['#text'],
-        'on_tour': True,
-        'other_songs': itunes_songs,
-        'description': ', '.join(tag['name'] for tag in lastfm_data['tags']['tag'][:3]),
-    })
+        return render_template('detail.html', **{
+            'name': itunes_data['artistName'],
+            'picture': lastfm_data['image'][2]['#text'],
+            'on_tour': True,
+            'other_songs': itunes_songs,
+            'description': ', '.join(tag['name']
+                for tag in lastfm_data['tags']['tag'][:3]),
+        })
 
 
 @app.route('/recommend')

@@ -2,7 +2,9 @@ body{;
 	background-color: #e15b4f
 }
 
-
+a {
+  color: #fff;
+}
 
 .content-container{
 	 margin-left: auto;

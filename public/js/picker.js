@@ -115,7 +115,7 @@
     });
   });
 
-  $('#start').click(function() {
+  $('#start-page').click(function() {
     $(this).hide();
     song.play();
     var count_from = 60;

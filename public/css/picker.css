@@ -24,6 +24,7 @@ a {
 }
 #current-art {
   margin-bottom: 0px;
+  background-color: #fff;
 }
 #current-info {
   padding-top: 5;
@@ -100,7 +101,6 @@ a {
   margin-left: auto;
     padding-top: 200px;
     margin-right: auto;
-     width: 100px;
     text-align: center;
     padding-bottom: 10px;
     color: #fff;

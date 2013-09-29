@@ -52,7 +52,7 @@
       $('audio').attr('src', info.previewUrl);
       $('#current-art img').attr('src', info.artworkUrl100)
         .attr('width', 300);
-      $('#current-info').html(info.trackName + '<br />' + info.artistName);
+      $('#current-info').html(info.trackName + '<br /> by ' + info.artistName);
       $('audio')[0].volume = 0.25;
     },
     get_new_song: function(genre, callback) {
@@ -117,13 +117,16 @@
 
   $('#start-page').click(function() {
     $(this).hide();
+    var start_page = $(this);
     song.play();
-    var count_from = 60;
+    var count_from = 45;
     var countdown = new Countdown(count_from, function(seconds) {
       console.log(Math.floor((seconds/count_from) * 100) + '%');
       $('#progress-bar').css('width', Math.floor((seconds/count_from) * 100) + '%')
     }, function() {
-      console.log('done');
+      start_page.find('#start h1').text('Please wait...');
+      start_page.show();
+      window.location = '/recommend?artists=' + liked.join(';');
     });
   });
 })(jQuery);

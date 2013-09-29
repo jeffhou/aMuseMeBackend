@@ -51,7 +51,7 @@ a {
   border-radius: 60px;
   width: 120px;
   height: 120px;
-  box-shadow: 5px 5px 3px black;
+  //box-shadow: 5px 5px 3px black;
 }
 #thumbs-up img, #thumbs-down img {
   margin-left: 18px;

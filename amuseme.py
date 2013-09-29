@@ -109,5 +109,5 @@ def get_genres():
 
 
 if __name__ == '__main__':
-    app.run(debug=os.environ.get('DEBUG', True),
+    app.run(debug=os.environ.get('DEBUG', True), host='0.0.0.0',
             port=int(os.environ.get('PORT', 5000)))

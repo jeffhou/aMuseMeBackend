@@ -2,6 +2,7 @@
   var genres = {};
   var liked = [];
 
+
   var weighted_average = function(genres, callback) {
     var running_total = 0, acc = 0;
     var genre_pairs = _.pairs(genres);
@@ -14,9 +15,7 @@
 
     for (var i=0; i < genre_pairs.length; i++) {
       acc += genre_pairs[i][1];
-      console.log(rnd, acc, rnd<acc);
       if (rnd < acc) {
-        console.log('less');
         return genre_pairs[i][0];
       }
     }
@@ -56,9 +55,13 @@
       $('#current-info').html(info.trackName + '<br />' + info.artistName);
       $('audio')[0].volume = 0.25;
     },
-    get_new_song: function(callback) {
+    get_new_song: function(genre, callback) {
       var _that = this;
-      $.get('/api/random', function(data) {
+      var url = '/api/random';
+      if (genre) {
+        url += '?genre=' + genre;
+      }
+      $.get(url, function(data) {
         _that.update_info(data);
         _that.play();
         if (callback)
@@ -67,14 +70,12 @@
     },
     like: function() {
       genres[this.info.genre] *= 2;
-      console.log(genres);
       liked.push(this.info.artistName);
-      this.get_new_song();
+      this.get_new_song(weighted_average(genres));
     },
     dislike: function() {
       genres[this.info.genre] /= 2;
-      console.log(genres);
-      this.get_new_song();
+      this.get_new_song(weighted_average(genres));
     },
   };
 
@@ -97,6 +98,7 @@
   },
   function (err, res) {
     song.update_info(res.random_song);
+    song.get_new_song(null);
     song.play();
     $('#current-art').click(function() {
       song.toggle();

@@ -54,7 +54,8 @@ def detail(artist_id):
     itunes_data = itunes.lookup(artist_id)
     lastfm_data = lastfm.get_artist(itunes_data['artistName'])
 
-    song_fields = ['trackName', 'previewUrl', 'artworkUrl100', 'collectionName']
+    song_fields = ['trackName', 'previewUrl', 'artworkUrl100', 'collectionName',
+                   'trackPrice']
     itunes_songs = itunes.search(itunes_data['artistName'])[:3]
     itunes_songs = [dict((k, song[k]) for k in song_fields)
                     for song in itunes_songs]
@@ -64,6 +65,7 @@ def detail(artist_id):
         'picture': lastfm_data['image'][2]['#text'],
         'on_tour': True,
         'other_songs': itunes_songs,
+        'description': ', '.join(tag['name'] for tag in lastfm_data['tags']['tag'][:3]),
     })
 
 

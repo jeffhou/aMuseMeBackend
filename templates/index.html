@@ -1,13 +1,30 @@
 <html>
-  <head>
-    <title></title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/dist/css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
-  </head>
-  <body>
-    <div id="content">
-      <h1>Hello World!</h1>
-      <a href="{{ url_for('picker') }}"></a>
+<head>
+  <title></title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/dist/css/bootstrap.min.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+</head>
+<body>
+  <div id="content">
+    <div class="container content-container">
+      <div class="header">
+        <h1>iDiscover</h1>
+      </div>
+      <div class="center spacer">
+       <button class="button-rect" onclick="window.location.href='/picker'">
+        <h3>Start Listening</h3>
+      </button>
     </div>
-  </body>
+    <div class="row center">
+      <div class"col-sm-12">
+      <h3>The 60-second music interview, to discover <i>your</i> next favorite artist</h3>
+      </div>
+    </div>
+
+
+  </div>
+
+  <a href="{{ url_for('picker') }}"></a>
+</div>
+</body>
 </html>

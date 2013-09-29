@@ -95,7 +95,8 @@ def get_random():
             one=True)
 
     lookup = itunes.lookup(song['atom_id'])
-    fields = ['trackName', 'previewUrl', 'artworkUrl100', 'collectionName']
+    fields = ['trackName', 'previewUrl', 'artworkUrl100', 'collectionName',
+              'artistName']
     for field in fields:
         song[field] = lookup[field]
     return json_response(song)
@@ -109,5 +110,5 @@ def get_genres():
 
 
 if __name__ == '__main__':
-    app.run(debug=os.environ.get('DEBUG', True),
+    app.run(debug=os.environ.get('DEBUG', True), host='0.0.0.0',
             port=int(os.environ.get('PORT', 5000)))

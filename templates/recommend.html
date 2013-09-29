@@ -1,13 +1,28 @@
 <html>
   <head>
+    <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/dist/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/site.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/detail.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/recommend.css') }}" />
   </head>
   <body>
+    <div class="content-container container">
+    <h1>Recommended Artists</h1>
     {% for artist in similar %}
-      {{ artist['name'] }} <br />
-      Similar to: {{ artist['similar']|join(', ') }}
-    <br />
-    <br />
+    <div class="row detail-header">
+      <div class="col-sm-3">
+        <a href="/detail/{{ artist['name'] }}">
+          <img src="{{ artist['image'] }}" alt="" />
+        </a>
+      </div>
+      <div class="col-sm-9">
+        <a href="/detail/{{ artist['name'] }}">
+          {{ artist['name'] }}<br />
+        </a>
+        Similar to: {{ artist['similar']|join(', ') }}
+      </div>
+    </div>
     {% endfor %}
   </body>
 </html>

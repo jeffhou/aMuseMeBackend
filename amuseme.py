@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, g, Response
 from werkzeug.contrib.cache import SimpleCache
 from helpers import json_response
 from random import random
+from gevent import monkey
 import os
 import lastfm
 import json
@@ -110,5 +111,6 @@ def get_genres():
 
 
 if __name__ == '__main__':
+    monkey.patch_all()
     app.run(debug=os.environ.get('DEBUG', True), host='0.0.0.0',
             port=int(os.environ.get('PORT', 5000)))

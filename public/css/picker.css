@@ -1,18 +1,22 @@
 body {
   //background-image: url('../img/binding_dark.png');
   //background-size: cover;
-    background-color: #e15b4f;
+  background-color: #e15b4f;
 }
+
 #main-container {
   margin-left: auto;
   margin-right: auto;
-  width: 320;
   border-style: solid;
   border-color: white;
   border-width: 10px;
   border-radius: 5px;
   //box-shadow: 5px 5px 3px black;
   margin-top: 30px;
+}
+#current-container {
+  width: 320;
+  background-color: #fff;
 }
 #current-art {
   margin-bottom: 0px;
@@ -28,21 +32,34 @@ body {
 }
 
 #rate-buttons {
-  width: 300;
-  margin: auto;
+  margin-top: 30;
+  width: 500;
+  height: 2em;
+  font-size: 60;
+  background-color: white;
+  vertical-align: middle;
 }
 
-#thumbs-up {
-  margin-left: 50px;
+#thumbs-up, #thumbs-down {
   display: inline;
-  float: left;
+  margin-top: -220;
+  background-color: white;
+  border-radius: 60px;
+  width: 120px;
+  height: 120px;
+  box-shadow: 5px 5px 3px black;
 }
-#thumbs-down {
-  margin-right: 50px;
-  display: inline;
+#thumbs-up img, #thumbs-down img {
+  margin-left: 18px;
+  margin-top: 12px;
+  width: 80px;
+}
+#thumbs-up {
   float: right;
 }
-
+#thumbs-down {
+  float: left;
+}
 #content {
   z-index: 10;
   position: relative;
@@ -59,7 +76,7 @@ body {
 
 #progress-bar {
   background-color: red;
-  height: 2px;
+  height: 4px;
   width: 100%;
 }
 

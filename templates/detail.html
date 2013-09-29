@@ -20,7 +20,7 @@
       </div>
       <div class="tracks">
         {% for track in other_songs %}
-        <div class="row spacer">
+        <div class="row spacer song">
           <div class="col-sm-4 left-col-width"></div>
           <div class="col-sm-8">
             <div class="col-sm-4 no-margin-left">
@@ -31,6 +31,8 @@
               <h5>{{ track.collectionName }}</h5>
               <div class="flat-bottom"><h5><a href="">${{ track.trackPrice }}</a></h5></div>
             </div>
+            <audio id="audio" src="{{ track.previewUrl }}">
+            </audio>
           </div>
         </div>
         {% endfor %}
@@ -39,5 +41,8 @@
 
 </div>
 </div>
+<script type="text/javascript" src="/vendor/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/vendor/underscore/underscore-min.js"></script>
+<script type="text/javascript" src="/js/detail.js"></script>
 </body>
 </html>

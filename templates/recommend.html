@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/dist/css/bootstrap.min.css') }}" />
+  </head>
+  <body>
+    {% for artist in similar %}
+      {{ artist['name'] }} <br />
+      Similar to: {{ artist['similar']|join(', ') }}
+    <br />
+    <br />
+    {% endfor %}
+  </body>
+</html>

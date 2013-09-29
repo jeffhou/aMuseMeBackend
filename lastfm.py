@@ -23,13 +23,24 @@ def get_similar(*artists):
     similar_artists = {}
     urls = ("http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=%s&api_key=%s&format=json&limit=3" % (artist, API_KEY) for artist in artists)
     rs = grequests.map((grequests.get(url) for url in urls))
+    artist_images = {}
     for r in rs:
         r_json = r.json()
         artist = r_json['similarartists']['@attr']['artist']
         for similar in r_json['similarartists']['artist']:
+            if similar['name'] not in artist_images:
+                artist_images[similar['name']] = similar['image'][2]['#text']
             if similar['name'] not in similar_artists:
                 similar_artists[similar['name']] = []
-            similar_artists[similar['name']].append(artist)
+            if len(similar_artists[similar['name']]) < 4:
+                similar_artists[similar['name']].append(artist)
+
+    similar_artists = [{
+            'name': artist,
+            'image': artist_images[artist],
+            'similar': similar
+        }
+        for artist, similar in similar_artists.iteritems()]
     return sorted(
-        similar_artists.iteritems(), key=lambda s: len(similar_artists[s[0]]),
+        similar_artists, key=lambda s: len(s['similar']),
         reverse=True)

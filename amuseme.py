@@ -70,6 +70,19 @@ def detail(artist_id):
     })
 
 
+@app.route('/recommend')
+def get_similar():
+    artists = request.args.get('artists')
+    if artists:
+        artists = artists.split(';')
+        similar = lastfm.get_similar(*artists)
+    else:
+        similar = []
+    return render_template('recommend.html', **{
+        'similar': similar
+    })
+
+
 @app.route('/api/artist')
 def get_artist():
     artist_name = request.args.get('artist')

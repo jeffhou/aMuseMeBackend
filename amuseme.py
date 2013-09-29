@@ -95,7 +95,8 @@ def get_random():
             one=True)
 
     lookup = itunes.lookup(song['atom_id'])
-    fields = ['trackName', 'previewUrl', 'artworkUrl100', 'collectionName']
+    fields = ['trackName', 'previewUrl', 'artworkUrl100', 'collectionName',
+              'artistName']
     for field in fields:
         song[field] = lookup[field]
     return json_response(song)

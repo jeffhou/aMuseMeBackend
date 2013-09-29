@@ -1,7 +1,7 @@
 body {
-  background-image: url('../img/binding_dark.png');
+  //background-image: url('../img/binding_dark.png');
   //background-size: cover;
-  font-family: 'Raleway', sans-serif;
+  background-color: #e15b4f;
 }
 #current-container{
   margin-left: auto;
@@ -10,7 +10,8 @@ body {
   border-color: white;
   border-width: 10px;
   border-radius: 5px;
-  box-shadow: 5px 5px 3px black;
+  //box-shadow: 5px 5px 3px black;
+  margin-top: 30px;
 }
 #current-container {
   width: 320;
@@ -63,7 +64,7 @@ body {
 }
 
 .container {
-  margin-top: 50px;
+  margin-top: 0px;
 }
 
 .glyphicon {

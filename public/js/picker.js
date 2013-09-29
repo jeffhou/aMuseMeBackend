@@ -126,7 +126,7 @@
     }, function() {
       start_page.find('#start h1').text('Please wait...');
       start_page.show();
-      window.location = '/recommend?artists=' + liked.join(';');
+      window.open('/recommend?artists=' + liked.join(';'), "_self");
     });
   });
 })(jQuery);

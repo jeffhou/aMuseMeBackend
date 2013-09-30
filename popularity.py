@@ -3,7 +3,7 @@ import csv
 import json
 
 DATABASE = 'db/popularity.db'
-MAX_GENRE = 400
+MAX_GENRE = 90
 
 
 if __name__ == '__main__':

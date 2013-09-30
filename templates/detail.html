@@ -4,6 +4,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/dist/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/site.css') }}" />
   <link rel="stylesheet" href="{{ url_for('static', filename='css/detail.css') }}" />
+  <title>{{ name }}</title>
 </head>
 <body>
   <div>
@@ -16,6 +17,7 @@
         <div class="col-sm-8">
           <h2>{{ name }}</h2>
           <h4>{{ description}}</h4>
+          Tap a song below to play
         </div>
       </div>
       <div class="tracks">

@@ -36,6 +36,7 @@ def get_similar(*artists):
                 if len(similar_artists[similar['name']]) < 4:
                     similar_artists[similar['name']].append(artist)
         except KeyError:
+            print 'KeyError'
             pass
 
     similar_artists = [{

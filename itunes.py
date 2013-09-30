@@ -7,7 +7,6 @@ def search(search_term, **params):
         (search_term, urlencode(params)))
     results = [r for r in res.json().get('results', [])
         if r['wrapperType'] == 'track']
-    print results
     return results
 
 def lookup(atom_id):

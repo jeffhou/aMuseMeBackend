@@ -59,7 +59,7 @@ def detail(artist_name):
         song_fields = ['trackName', 'previewUrl', 'artworkUrl100',
             'collectionName', 'trackPrice']
         itunes_songs = itunes.search(itunes_data['artistName'])[:3]
-        itunes_songs = [dict((k, song[k]) for k in song_fields)
+        itunes_songs = [dict((k, song[k]) for k in song_fields if k in song)
                         for song in itunes_songs]
 
         return render_template('detail.html', **{
@@ -114,7 +114,8 @@ def get_random():
     fields = ['trackName', 'previewUrl', 'artworkUrl100', 'collectionName',
               'artistName']
     for field in fields:
-        song[field] = lookup[field]
+        if field in lookup:
+            song[field] = lookup[field]
     return json_response(song)
 
 

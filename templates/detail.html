@@ -29,7 +29,13 @@
             <div class="col-sm-7 equal-height">
               <h4>{{ track.trackName }}</h4>
               <h5>{{ track.collectionName }}</h5>
-              <div class="flat-bottom"><h5><a href="">${{ track.trackPrice }}</a></h5></div>
+              <div class="flat-bottom">
+                <h5>
+                 <a href="{{ track.collectionViewUrl }}">
+                   ${{ track.trackPrice }}
+                 </a>
+               </h5>
+             </div>
             </div>
             <audio id="audio" src="{{ track.previewUrl }}">
             </audio>
